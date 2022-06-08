@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function Product({location}){
-    const {state} = location;
+    const params = useParams();
+
+    const {id} = params;
     const [{title,image,price,description}, setInfo] = useState([]);
 
     useEffect(() => {
@@ -9,19 +12,10 @@ function Product({location}){
       }, []);
     
       const getData = async() => {
-          const url = `https://fakestoreapi.com/products/${state}`;
+          const url = `https://fakestoreapi.com/products/${id}`;
           const resp = await fetch(url);
           const data = await resp.json();
           const product = data;
-        //   const product = data.map(product=> {
-        //       return{
-        //           id: product.id,
-        //           title: product.title,
-        //           image: product.image,
-        //           price: product.price,
-        //           description: product.description
-        //       }
-        //   })
           console.log(data)
           setInfo(product);
       }
