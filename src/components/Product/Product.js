@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react";
+// Este componente muestra el detalle del producto seleccionado
+
+
 import { useParams } from "react-router-dom";
+import { useFetchProduct } from "../../hooks/useFetchProduct";
 
 function Product({location}){
-    const [loading, setLoading] = useState(false);
+
+    //useParams nos permite obtener el id proveniente de react router
     const params = useParams();
-
     const {id} = params;
-    const [{title,image,price,description}, setInfo] = useState([]);
 
-    useEffect(() => {
-        setLoading(true);
-        getData();
-      }, []);
-    
-      const getData = async() => {
-          const url = `https://fakestoreapi.com/products/${id}`;
-          const resp = await fetch(url);
-          const data = await resp.json();
-          const product = data;
-          setInfo(product);
-          setLoading(false);
-      }
+    //Uso de custom hook el cual nos proporciona la informacion de la peticion con fetch asi como el estado de "loading"
+    const {data, loading} = useFetchProduct(id);
+    const {title,image,price,description} = data;
 
     return(
         

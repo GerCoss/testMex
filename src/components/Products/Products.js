@@ -1,37 +1,18 @@
-import React, { useState, useEffect } from "react";
+//Este componente muestra todos los productos proporcionados por el api
+
 import {
     Link
   } from "react-router-dom";
+import { useFetchProducts } from "../../hooks/useFetchProducts";
 
 import "./Products.css";
 
 
 const Products = () => {
-  const [loading, setLoading] = useState(false);
-  const [info, setInfo] = useState([]);
 
-  useEffect(() => {
-    setLoading(true);
-    getData();
-  }, []);
+  //Uso de custom hook el cual nos proporciona la informacion de la peticion con fetch asi como el estado de "loading"
+  const {data, loading} = useFetchProducts();
 
-  const getData = async() => {
-      const url = "https://fakestoreapi.com/products";
-      const resp = await fetch(url);
-      const data = await resp.json();
-      const products = data.map(product=> {
-          return{
-              id: product.id,
-              title: product.title,
-              image: product.image,
-              price: product.price,
-              category: product.category
-          }
-      })
-
-      setLoading(false);
-      setInfo(products);
-  }
 
   return (
     <div className="products-container">
@@ -42,7 +23,7 @@ const Products = () => {
         </div>
       )}
 
-      {info.map(({id,image,title,price})=> ( 
+      {data.map(({id,image,title,price})=> ( 
           <Link key={id} to={`/product/${id}`}>
             <div  className="card">
             <div><img src={image} alt="#"/></div>
