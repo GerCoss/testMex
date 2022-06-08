@@ -15,11 +15,11 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/"  component={(props) => (
+          <Route path="/product/:id" component={(props) => (<Product {...props} /> )} />
+          <Route path="/" exact component={(props) => (
             <Products/>
           )}
           />
-          <Route path="/product/:id" component={(props) => <Product {...props} /> } />
           <Route>404 page</Route>
         </Switch>
       </div>

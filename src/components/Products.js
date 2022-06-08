@@ -43,8 +43,11 @@ const Products = () => {
       )}
 
       {info.map(({id,image,title,price})=> ( 
-          <Link key={id} to={`/product/${id}`}>
-            <div  className="card">
+          <Link  to={{
+              pathname: `/product/${id}`,
+              state: id
+              }}>
+            <div key={id} className="card">
             <div><img src={image} alt="#"/></div>
             <div className="card-description">
                 <h6>{title}</h6>
