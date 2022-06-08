@@ -1,6 +1,6 @@
-import Products from "./components/Products";
-import Product from "./components/Product";
-import NotFoundPage from "./components/NotFoundPage";
+import Products from "./components/Products/Products";
+import Product from "./components/Product/Product";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 import {
   BrowserRouter,
