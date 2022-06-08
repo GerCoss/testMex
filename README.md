@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and the css [codeOpen](https://codepen.io/GeorgeGedox/pen/yEwoqP).
 
 ## Available Scripts
 
