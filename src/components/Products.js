@@ -38,13 +38,13 @@ const Products = () => {
       {loading && (
         <div>
           {" "}
-          <h1>Loading...</h1>
+          <h1>Cargando...</h1>
         </div>
       )}
 
       {info.map(({id,image,title,price})=> ( 
-          <Link  to={`/product/${id}`}>
-            <div key={id} className="card">
+          <Link key={id} to={`/product/${id}`}>
+            <div  className="card">
             <div><img src={image} alt="#"/></div>
             <div className="card-description">
                 <h6>{title}</h6>
